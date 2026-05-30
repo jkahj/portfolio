@@ -128,6 +128,41 @@
     }
     .card-link:hover { text-decoration: underline; }
 
+    /* FEATURED CARD */
+    .featured-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px; overflow: hidden;
+      display: grid; grid-template-columns: 1.1fr 1fr; gap: 0;
+      margin-bottom: 2rem;
+      transition: border-color .2s;
+    }
+    .featured-card:hover { border-color: var(--accent); }
+    .featured-shots {
+      display: flex; gap: .6rem; padding: 1.6rem;
+      background: linear-gradient(135deg, rgba(108,140,247,.08), rgba(167,139,250,.08));
+      align-items: center; justify-content: center;
+    }
+    .featured-shots img {
+      width: 31%; border-radius: 10px;
+      border: 1px solid var(--border);
+      box-shadow: 0 8px 24px rgba(0,0,0,.35);
+    }
+    .featured-info { padding: 1.8rem; display: flex; flex-direction: column; gap: .9rem; }
+    .featured-badge {
+      align-self: flex-start;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      color: #fff; font-size: .72rem; font-weight: 700;
+      letter-spacing: .05em; text-transform: uppercase;
+      padding: .25rem .7rem; border-radius: 20px;
+    }
+    .featured-info h3 { font-size: 1.3rem; font-weight: 700; }
+    .featured-info p { font-size: .92rem; color: var(--muted); flex: 1; }
+    .featured-links { display: flex; flex-wrap: wrap; gap: .8rem; margin-top: .4rem; }
+    @media (max-width: 700px) {
+      .featured-card { grid-template-columns: 1fr; }
+    }
+
     /* SKILLS */
     .skills-grid {
       display: grid; gap: 1rem;
@@ -176,7 +211,7 @@
 <div class="hero">
   <div class="hero-tag">Open to opportunities</div>
   <h1>Hi, I'm Jason Huang</h1>
-  <p>Software engineer specializing in AI-powered applications, full-stack web development, and developer tooling. I build things that are fast, useful, and a bit smart.</p>
+  <p>Full-stack developer specializing in AI-powered applications, mobile apps, and developer tooling. From React Native apps to FastAPI backends to AI vision systems — I build things that are fast, useful, and a bit smart.</p>
   <div class="hero-btns">
     <a class="btn btn-primary" href="#resume">&#8595; Download Resume</a>
     <a class="btn btn-ghost" href="https://github.com/jkahj" target="_blank">GitHub</a>
@@ -189,18 +224,43 @@
 <section id="projects">
   <div class="section-label">Work</div>
   <h2>Featured Projects</h2>
+  <!-- FEATURED: BUYCART graduation project -->
+  <div class="featured-card">
+    <div class="featured-shots">
+      <img src="./assets/buycart/home.png" alt="BUYCART home screen" />
+      <img src="./assets/buycart/orders.png" alt="BUYCART order acceptance screen" />
+      <img src="./assets/buycart/notifications.png" alt="BUYCART notifications screen" />
+    </div>
+    <div class="featured-info">
+      <span class="featured-badge">★ Graduation Project</span>
+      <h3>BUYCART — Campus Group-Buying App</h3>
+      <p>A full-stack mobile app that lets students team up on group orders to split delivery costs. I built the entire stack: a cross-platform React Native (Expo) client with 25+ screens, a FastAPI + MySQL backend, push notifications, image uploads, and a reputation-scoring / credit-tier system that ranks users by reliability.</p>
+      <div class="tag-row">
+        <span class="tag">React Native</span>
+        <span class="tag">Expo</span>
+        <span class="tag">FastAPI</span>
+        <span class="tag">MySQL</span>
+        <span class="tag">SQLAlchemy</span>
+        <span class="tag">Push Notifications</span>
+      </div>
+      <div class="featured-links">
+        <a class="btn btn-primary" href="https://github.com/jkahj/campus-group-order">View Code on GitHub</a>
+      </div>
+    </div>
+  </div>
+
   <div class="projects-grid">
 
     <div class="card">
       <div class="card-icon" style="background:rgba(108,140,247,.12)">📄</div>
       <h3>Drawing Translator</h3>
-      <p>OCR-powered tool that extracts text from engineering drawings and translates technical content across languages. Supports multi-page PDFs with AI-assisted translation.</p>
+      <p>OCR-powered tool that extracts text from engineering drawings and translates technical content across languages. Supports multi-page PDFs with AI-assisted translation and inch-value conversion.</p>
       <div class="tag-row">
         <span class="tag">Python</span>
         <span class="tag">Gemini AI</span>
         <span class="tag">OCR</span>
-        <span class="tag">Tkinter</span>
       </div>
+      <a class="card-link" href="https://drawing-translator.onrender.com/" target="_blank">🚀 Try Live Demo →</a>
       <a class="card-link" href="https://github.com/jkahj/Drawing-Translator">View on GitHub →</a>
     </div>
 
@@ -213,18 +273,18 @@
         <span class="tag">AI Vision</span>
         <span class="tag">Automation</span>
       </div>
+      <a class="card-link" href="https://invoice-ai-agent-dr3b.onrender.com/" target="_blank">🚀 Try Live Demo →</a>
       <a class="card-link" href="https://github.com/jkahj/invoice-ai-agent">View on GitHub →</a>
     </div>
 
     <div class="card">
       <div class="card-icon" style="background:rgba(52,211,153,.12)">🇯🇵</div>
-      <h3>Japanese Learning App</h3>
-      <p>Progressive Web App for JLPT vocabulary study with spaced-repetition flashcards and Firebase sync — works offline and across devices.</p>
+      <h3>Japanese Learning App <span style="font-size:.7rem;font-weight:600;color:var(--muted);background:var(--border);padding:.1rem .5rem;border-radius:20px;vertical-align:middle;">Made for fun</span></h3>
+      <p>A personal side project built out of interest — a Progressive Web App for JLPT vocabulary study with spaced-repetition flashcards and Firebase sync. Works offline and across devices.</p>
       <div class="tag-row">
         <span class="tag">React</span>
         <span class="tag">Firebase</span>
         <span class="tag">PWA</span>
-        <span class="tag">SRS</span>
       </div>
       <a class="card-link" href="https://github.com/jkahj/japanese-learning-app">View on GitHub →</a>
     </div>
@@ -249,9 +309,9 @@
     <div class="skill-group">
       <h4>Frameworks</h4>
       <ul>
-        <li>React</li>
-        <li>Vite</li>
-        <li>Node.js</li>
+        <li>React / React Native</li>
+        <li>Expo</li>
+        <li>FastAPI</li>
       </ul>
     </div>
     <div class="skill-group">
@@ -263,11 +323,11 @@
       </ul>
     </div>
     <div class="skill-group">
-      <h4>Tools & Cloud</h4>
+      <h4>Backend & Cloud</h4>
       <ul>
-        <li>Git / GitHub</li>
-        <li>Firebase</li>
+        <li>MySQL / SQLAlchemy</li>
         <li>REST APIs</li>
+        <li>Firebase · Render</li>
       </ul>
     </div>
   </div>
