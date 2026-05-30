@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jason Huang — Portfolio</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0f1117;
+      --surface: #1a1d27;
+      --border: #2a2d3a;
+      --accent: #6c8cf7;
+      --accent2: #a78bfa;
+      --text: #e8eaf0;
+      --muted: #8b8fa8;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    /* NAV */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(15,17,23,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 2rem;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 56px;
+    }
+    nav .logo { font-weight: 700; letter-spacing: .03em; color: var(--accent); }
+    nav ul { list-style: none; display: flex; gap: 2rem; }
+    nav a { color: var(--muted); text-decoration: none; font-size: .9rem; transition: color .2s; }
+    nav a:hover { color: var(--text); }
+
+    /* HERO */
+    .hero {
+      max-width: 900px; margin: 0 auto;
+      padding: 7rem 2rem 5rem;
+    }
+    .hero-tag {
+      display: inline-block;
+      background: rgba(108,140,247,.15);
+      color: var(--accent);
+      font-size: .8rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase;
+      padding: .3rem .8rem; border-radius: 20px; border: 1px solid rgba(108,140,247,.3);
+      margin-bottom: 1.5rem;
+    }
+    .hero h1 {
+      font-size: clamp(2.4rem, 6vw, 4rem);
+      font-weight: 800; line-height: 1.1;
+      background: linear-gradient(135deg, var(--text) 40%, var(--accent2));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      margin-bottom: 1.2rem;
+    }
+    .hero p {
+      font-size: 1.15rem; color: var(--muted);
+      max-width: 580px; margin-bottom: 2.5rem;
+    }
+    .hero-btns { display: flex; flex-wrap: wrap; gap: 1rem; }
+    .btn {
+      display: inline-flex; align-items: center; gap: .5rem;
+      padding: .7rem 1.6rem; border-radius: 8px;
+      font-size: .95rem; font-weight: 600; text-decoration: none;
+      transition: all .2s;
+    }
+    .btn-primary {
+      background: var(--accent); color: #fff;
+    }
+    .btn-primary:hover { background: #5a7bf0; transform: translateY(-1px); }
+    .btn-ghost {
+      border: 1px solid var(--border); color: var(--text);
+    }
+    .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+
+    /* SECTION */
+    section { max-width: 900px; margin: 0 auto; padding: 4rem 2rem; }
+    .section-label {
+      font-size: .8rem; font-weight: 600; letter-spacing: .1em;
+      text-transform: uppercase; color: var(--accent); margin-bottom: .6rem;
+    }
+    section h2 {
+      font-size: 1.9rem; font-weight: 700; margin-bottom: 2.5rem;
+    }
+    hr.divider {
+      border: none; border-top: 1px solid var(--border);
+      max-width: 900px; margin: 0 auto;
+    }
+
+    /* PROJECTS */
+    .projects-grid {
+      display: grid; gap: 1.5rem;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    }
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px; padding: 1.6rem;
+      display: flex; flex-direction: column; gap: .8rem;
+      transition: border-color .2s, transform .2s;
+    }
+    .card:hover { border-color: var(--accent); transform: translateY(-3px); }
+    .card-icon {
+      width: 44px; height: 44px; border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.4rem;
+    }
+    .card h3 { font-size: 1.05rem; font-weight: 700; }
+    .card p { font-size: .9rem; color: var(--muted); flex: 1; }
+    .tag-row { display: flex; flex-wrap: wrap; gap: .4rem; }
+    .tag {
+      font-size: .72rem; font-weight: 600;
+      padding: .2rem .6rem; border-radius: 20px;
+      background: rgba(108,140,247,.12); color: var(--accent);
+      border: 1px solid rgba(108,140,247,.2);
+    }
+    .card-link {
+      display: inline-flex; align-items: center; gap: .35rem;
+      font-size: .85rem; font-weight: 600;
+      color: var(--accent); text-decoration: none;
+      margin-top: .4rem;
+    }
+    .card-link:hover { text-decoration: underline; }
+
+    /* SKILLS */
+    .skills-grid {
+      display: grid; gap: 1rem;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    }
+    .skill-group { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 1.2rem; }
+    .skill-group h4 { font-size: .82rem; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: .06em; margin-bottom: .7rem; }
+    .skill-group ul { list-style: none; display: flex; flex-direction: column; gap: .35rem; }
+    .skill-group li { font-size: .9rem; color: var(--muted); }
+
+    /* RESUME */
+    .resume-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 14px; padding: 2rem;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 1.5rem;
+    }
+    .resume-card div h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: .3rem; }
+    .resume-card div p { font-size: .9rem; color: var(--muted); }
+
+    /* FOOTER */
+    footer {
+      text-align: center; padding: 3rem 2rem;
+      color: var(--muted); font-size: .85rem;
+      border-top: 1px solid var(--border);
+    }
+    footer a { color: var(--muted); text-decoration: none; }
+    footer a:hover { color: var(--accent); }
+
+    @media (max-width: 600px) {
+      .projects-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <span class="logo">Jason Huang</span>
+  <ul>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#resume">Resume</a></li>
+  </ul>
+</nav>
+
+<div class="hero">
+  <div class="hero-tag">Open to opportunities</div>
+  <h1>Hi, I'm Jason Huang</h1>
+  <p>Software engineer specializing in AI-powered applications, full-stack web development, and developer tooling. I build things that are fast, useful, and a bit smart.</p>
+  <div class="hero-btns">
+    <a class="btn btn-primary" href="#resume">&#8595; Download Resume</a>
+    <a class="btn btn-ghost" href="https://github.com/jkahj" target="_blank">GitHub</a>
+    <a class="btn btn-ghost" href="mailto:jason.huang920922@gmail.com">Email Me</a>
+  </div>
+</div>
+
+<hr class="divider" />
+
+<section id="projects">
+  <div class="section-label">Work</div>
+  <h2>Featured Projects</h2>
+  <div class="projects-grid">
+
+    <div class="card">
+      <div class="card-icon" style="background:rgba(108,140,247,.12)">📄</div>
+      <h3>Drawing Translator</h3>
+      <p>OCR-powered tool that extracts text from engineering drawings and translates technical content across languages. Supports multi-page PDFs with AI-assisted translation.</p>
+      <div class="tag-row">
+        <span class="tag">Python</span>
+        <span class="tag">Gemini AI</span>
+        <span class="tag">OCR</span>
+        <span class="tag">Tkinter</span>
+      </div>
+      <a class="card-link" href="https://github.com/jkahj/Drawing-Translator">View on GitHub →</a>
+    </div>
+
+    <div class="card">
+      <div class="card-icon" style="background:rgba(167,139,250,.12)">🤖</div>
+      <h3>AI Invoice Recognition System</h3>
+      <p>Intelligent invoice processing agent that uses AI vision to extract structured data from invoice images and PDFs, automating accounts-payable workflows.</p>
+      <div class="tag-row">
+        <span class="tag">Python</span>
+        <span class="tag">AI Vision</span>
+        <span class="tag">Automation</span>
+      </div>
+      <a class="card-link" href="https://github.com/jkahj/invoice-ai-agent">View on GitHub →</a>
+    </div>
+
+    <div class="card">
+      <div class="card-icon" style="background:rgba(52,211,153,.12)">🇯🇵</div>
+      <h3>Japanese Learning App</h3>
+      <p>Progressive Web App for JLPT vocabulary study with spaced-repetition flashcards and Firebase sync — works offline and across devices.</p>
+      <div class="tag-row">
+        <span class="tag">React</span>
+        <span class="tag">Firebase</span>
+        <span class="tag">PWA</span>
+        <span class="tag">SRS</span>
+      </div>
+      <a class="card-link" href="https://github.com/jkahj/japanese-learning-app">View on GitHub →</a>
+    </div>
+
+  </div>
+</section>
+
+<hr class="divider" />
+
+<section id="skills">
+  <div class="section-label">Capabilities</div>
+  <h2>Skills & Tools</h2>
+  <div class="skills-grid">
+    <div class="skill-group">
+      <h4>Languages</h4>
+      <ul>
+        <li>Python</li>
+        <li>JavaScript / TypeScript</li>
+        <li>HTML / CSS</li>
+      </ul>
+    </div>
+    <div class="skill-group">
+      <h4>Frameworks</h4>
+      <ul>
+        <li>React</li>
+        <li>Vite</li>
+        <li>Node.js</li>
+      </ul>
+    </div>
+    <div class="skill-group">
+      <h4>AI / Data</h4>
+      <ul>
+        <li>Google Gemini API</li>
+        <li>Claude (Anthropic)</li>
+        <li>OCR / Vision AI</li>
+      </ul>
+    </div>
+    <div class="skill-group">
+      <h4>Tools & Cloud</h4>
+      <ul>
+        <li>Git / GitHub</li>
+        <li>Firebase</li>
+        <li>REST APIs</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<hr class="divider" />
+
+<section id="resume">
+  <div class="section-label">Resume</div>
+  <h2>Download CV</h2>
+  <div class="resume-card">
+    <div>
+      <h3>Jason Huang — Resume</h3>
+      <p>Full work history, education, and contact details</p>
+    </div>
+    <a class="btn btn-primary" href="./resume.pdf" download>&#8595; Download PDF</a>
+  </div>
+</section>
+
+<footer>
+  <p>Built by Jason Huang &nbsp;·&nbsp;
+    <a href="mailto:jason.huang920922@gmail.com">jason.huang920922@gmail.com</a> &nbsp;·&nbsp;
+    <a href="https://github.com/jkahj" target="_blank">github.com/jkahj</a>
+  </p>
+</footer>
+
+</body>
+</html>
