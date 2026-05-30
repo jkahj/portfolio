@@ -138,13 +138,14 @@
       transition: border-color .2s;
     }
     .featured-card:hover { border-color: var(--accent); }
-    .featured-shots {
-      display: flex; gap: .6rem; padding: 1.6rem;
+    .featured-video {
+      display: flex; align-items: center; justify-content: center;
+      padding: 1.6rem;
       background: linear-gradient(135deg, rgba(108,140,247,.08), rgba(167,139,250,.08));
-      align-items: center; justify-content: center;
     }
-    .featured-shots img {
-      width: 31%; border-radius: 10px;
+    .featured-video iframe {
+      width: 100%; aspect-ratio: 16 / 9;
+      border-radius: 10px;
       border: 1px solid var(--border);
       box-shadow: 0 8px 24px rgba(0,0,0,.35);
     }
@@ -226,10 +227,14 @@
   <h2>Featured Projects</h2>
   <!-- FEATURED: BUYCART graduation project -->
   <div class="featured-card">
-    <div class="featured-shots">
-      <img src="./assets/buycart/home.png" alt="BUYCART home screen" />
-      <img src="./assets/buycart/orders.png" alt="BUYCART order acceptance screen" />
-      <img src="./assets/buycart/notifications.png" alt="BUYCART notifications screen" />
+    <div class="featured-video">
+      <iframe
+        src="https://www.youtube.com/embed/Da8L91q_4UE?rel=0"
+        title="BUYCART demo video"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerpolicy="strict-origin-when-cross-origin"
+        allowfullscreen></iframe>
     </div>
     <div class="featured-info">
       <span class="featured-badge">★ Graduation Project</span>
@@ -244,7 +249,9 @@
         <span class="tag">Push Notifications</span>
       </div>
       <div class="featured-links">
-        <a class="btn btn-primary" href="https://github.com/jkahj/campus-group-order">View Code on GitHub</a>
+        <a class="btn btn-primary" href="https://github.com/jkahj/campus-group-order" target="_blank">View Code on GitHub</a>
+        <a class="btn btn-ghost" href="./docs/BUYCART-presentation.pdf" target="_blank">&#8595; Presentation (PDF)</a>
+        <a class="btn btn-ghost" href="./docs/BUYCART-report.pdf" target="_blank">&#8595; Full Report (PDF)</a>
       </div>
     </div>
   </div>
