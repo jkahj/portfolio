@@ -198,9 +198,10 @@
     .card:hover { transform: translateY(-6px); border-color: var(--border-strong); box-shadow: 0 16px 40px rgba(0,0,0,.5); }
     .card-icon {
       width: 48px; height: 48px; border-radius: 12px;
-      display: flex; align-items: center; justify-content: center; font-size: 1.5rem;
+      display: flex; align-items: center; justify-content: center;
       border: 1px solid var(--border);
     }
+    .card-icon svg { width: 24px; height: 24px; }
     .card h3 { font-size: 1.1rem; font-weight: 600; }
     .card p { font-size: .9rem; color: var(--muted); flex: 1; }
     .tag-row { display: flex; flex-wrap: wrap; gap: .45rem; }
@@ -312,7 +313,7 @@
   <h1><span class="grad">Hi, I'm Jason Huang</span><br><span id="typed"></span></h1>
   <p>Full-stack developer specializing in AI-powered applications, mobile apps, and developer tooling. From React Native apps to FastAPI backends to AI vision systems — I build things that are fast, useful, and a bit smart.</p>
   <div class="hero-btns">
-    <a class="btn btn-primary" href="./autobiography.pdf" target="_blank">&#128196; View Autobiography (English &amp; Chinese)</a>
+    <a class="btn btn-primary" href="./autobiography.pdf" target="_blank">View Autobiography (English &amp; Chinese)</a>
     <a class="btn btn-ghost" href="https://github.com/jkahj" target="_blank">GitHub</a>
     <a class="btn btn-ghost" href="mailto:jason.huang920922@gmail.com">Contact Me</a>
   </div>
@@ -336,7 +337,7 @@
         allowfullscreen></iframe>
     </div>
     <div class="featured-info">
-      <span class="featured-badge">★ Graduation Project</span>
+      <span class="featured-badge">Graduation Project</span>
       <h3>BUYCART — Group-Buying App</h3>
       <p>A full-stack mobile app that lets people team up on group orders to split delivery costs. Contributed as a key team member, spearheading all frontend development and backend API integration — building the React Native (Expo) client, wiring up a FastAPI + MySQL backend, real-time push notifications, image uploads, and a reputation-scoring credit-tier system.</p>
       <div class="tag-row">
@@ -349,8 +350,8 @@
       </div>
       <div class="featured-links">
         <a class="btn btn-primary" href="https://github.com/jkahj/Group-order" target="_blank">View Code on GitHub</a>
-        <a class="btn btn-ghost" href="./docs/BUYCART-presentation.pdf" target="_blank">&#128196; View Presentation</a>
-        <a class="btn btn-ghost" href="./docs/BUYCART-report.pdf" target="_blank">&#128196; View Full Report</a>
+        <a class="btn btn-ghost" href="./docs/BUYCART-presentation.pdf" target="_blank">View Presentation</a>
+        <a class="btn btn-ghost" href="./docs/BUYCART-report.pdf" target="_blank">View Full Report</a>
       </div>
     </div>
   </div>
@@ -358,7 +359,9 @@
   <div class="projects-grid">
 
     <div class="card reveal">
-      <div class="card-icon" style="background:rgba(108,140,247,.12)">📄</div>
+      <div class="card-icon" style="background:rgba(108,140,247,.12)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#6c8cf7" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7V4h7"/><path d="M9 4c0 4-2.5 7-5 8"/><path d="M5 8c1.5 1.5 3.5 2.5 5 2.5"/><path d="M13 20l4-9 4 9"/><path d="M14.5 17h5"/></svg>
+      </div>
       <h3>Drawing Translator</h3>
       <p>OCR-powered tool that extracts text from engineering drawings and translates technical content across languages. Supports multi-page PDFs with AI-assisted translation and inch-value conversion.</p>
       <div class="tag-row">
@@ -366,12 +369,14 @@
         <span class="tag">Gemini AI</span>
         <span class="tag">OCR</span>
       </div>
-      <a class="card-link" href="https://drawing-translator-259556405603.asia-east1.run.app" target="_blank">🚀 Try Live Demo →</a>
+      <a class="card-link" href="https://drawing-translator-259556405603.asia-east1.run.app" target="_blank">Try Live Demo →</a>
       <a class="card-link" href="https://github.com/jkahj/Drawing-Translator">View on GitHub →</a>
     </div>
 
     <div class="card reveal">
-      <div class="card-icon" style="background:rgba(167,139,250,.12)">🤖</div>
+      <div class="card-icon" style="background:rgba(167,139,250,.12)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#a78bfa" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h9l3 3v15a0 0 0 0 1 0 0H6a0 0 0 0 1 0 0V3z"/><path d="M14 3v4h4"/><path d="M9 12h6"/><path d="M9 16h6"/></svg>
+      </div>
       <h3>AI Invoice Recognition System</h3>
       <p>Intelligent invoice processing agent that uses AI vision to extract structured data from invoice images and PDFs, automating accounts-payable workflows.</p>
       <div class="tag-row">
@@ -379,12 +384,14 @@
         <span class="tag">AI Vision</span>
         <span class="tag">Automation</span>
       </div>
-      <a class="card-link" href="https://invoice-ai-agent-dr3b.onrender.com/" target="_blank">🚀 Try Live Demo →</a>
+      <a class="card-link" href="https://invoice-ai-agent-dr3b.onrender.com/" target="_blank">Try Live Demo →</a>
       <a class="card-link" href="https://github.com/jkahj/invoice-ai-agent">View on GitHub →</a>
     </div>
 
     <div class="card reveal">
-      <div class="card-icon" style="background:rgba(52,211,153,.12)">🇯🇵</div>
+      <div class="card-icon" style="background:rgba(52,211,153,.12)">
+        <span style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.15rem;color:#34d399;">あ</span>
+      </div>
       <h3>Japanese Learning App <span class="badge-soft">Made for interest</span> <span class="badge-dev">In development</span></h3>
       <p>A personal side project built out of interest — a Progressive Web App for JLPT vocabulary study with spaced-repetition flashcards and Firebase sync. Works offline and across devices.</p>
       <div class="tag-row">
@@ -392,7 +399,7 @@
         <span class="tag">Firebase</span>
         <span class="tag">PWA</span>
       </div>
-      <a class="card-link" href="https://japanese-b4d88.web.app/" target="_blank">🚀 Try Live Demo →</a>
+      <a class="card-link" href="https://japanese-b4d88.web.app/" target="_blank">Try Live Demo →</a>
       <a class="card-link" href="https://github.com/jkahj/japanese-learning-app">View on GitHub →</a>
     </div>
 
