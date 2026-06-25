@@ -263,11 +263,16 @@
       background: linear-gradient(90deg, var(--accent), var(--accent3));
       -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
     }
-    .skill-group ul { list-style: none; display: flex; flex-direction: column; gap: .45rem; }
-    .skill-group li {
-      font-size: .9rem; color: var(--muted); display: flex; align-items: center; gap: .5rem;
+    .skill-group ul { list-style: none; display: flex; flex-direction: column; gap: .9rem; }
+    .skill-group li { display: flex; flex-direction: column; gap: .15rem; }
+    .skill-group li .sk {
+      font-size: .9rem; color: var(--text); font-weight: 500;
+      display: flex; align-items: center; gap: .5rem;
     }
-    .skill-group li::before { content: '▹'; color: var(--accent); }
+    .skill-group li .sk::before { content: '▹'; color: var(--accent); }
+    .skill-group li .sk-use {
+      font-size: .72rem; color: var(--muted); padding-left: 1.1rem; line-height: 1.4;
+    }
 
     /* ===== FOOTER ===== */
     footer {
@@ -415,37 +420,38 @@
     <div class="skill-group reveal">
       <h4>Languages</h4>
       <ul>
-        <li>Python</li>
-        <li>JavaScript</li>
-        <li>HTML / CSS</li>
+        <li><span class="sk">Python</span><span class="sk-use">BUYCART, Drawing Translator — backend APIs</span></li>
+        <li><span class="sk">JavaScript</span><span class="sk-use">BUYCART, Japanese App — app logic</span></li>
+        <li><span class="sk">HTML / CSS</span><span class="sk-use">Japanese App — web UI</span></li>
       </ul>
     </div>
     <div class="skill-group reveal">
       <h4>Frameworks</h4>
       <ul>
-        <li>React / React Native</li>
-        <li>Expo</li>
-        <li>FastAPI</li>
-        <li>Flask</li>
+        <li><span class="sk">React / React Native</span><span class="sk-use">BUYCART — cross-platform mobile app</span></li>
+        <li><span class="sk">Expo</span><span class="sk-use">BUYCART — mobile client runtime</span></li>
+        <li><span class="sk">FastAPI</span><span class="sk-use">BUYCART — REST API backend</span></li>
+        <li><span class="sk">Flask</span><span class="sk-use">Drawing Translator — web backend</span></li>
       </ul>
     </div>
     <div class="skill-group reveal">
       <h4>AI / Data</h4>
       <ul>
-        <li>Google Gemini API</li>
-        <li>Claude (Anthropic)</li>
-        <li>OCR / Vision AI</li>
+        <li><span class="sk">Google Gemini API</span><span class="sk-use">Drawing Translator, AI Invoice — translation &amp; extraction</span></li>
+        <li><span class="sk">Claude (Anthropic)</span><span class="sk-use">Project Assistant — AI assistant logic</span></li>
+        <li><span class="sk">OCR / Vision AI</span><span class="sk-use">Drawing Translator, AI Invoice — text extraction</span></li>
       </ul>
     </div>
     <div class="skill-group reveal">
       <h4>Backend &amp; Cloud</h4>
       <ul>
-        <li>MySQL / SQLAlchemy</li>
-        <li>REST APIs</li>
-        <li>Docker</li>
-        <li>Git / GitHub</li>
-        <li>Google Cloud Run</li>
-        <li>Firebase · Render</li>
+        <li><span class="sk">MySQL / SQLAlchemy</span><span class="sk-use">BUYCART — database &amp; ORM</span></li>
+        <li><span class="sk">REST APIs</span><span class="sk-use">BUYCART, Drawing Translator — client-server</span></li>
+        <li><span class="sk">Docker</span><span class="sk-use">Drawing Translator — Cloud Run deploy</span></li>
+        <li><span class="sk">Git / GitHub</span><span class="sk-use">All projects — version control</span></li>
+        <li><span class="sk">Google Cloud Run</span><span class="sk-use">Drawing Translator — backend hosting</span></li>
+        <li><span class="sk">Firebase</span><span class="sk-use">BUYCART, Japanese App — auth &amp; sync</span></li>
+        <li><span class="sk">Render</span><span class="sk-use">Drawing Translator, AI Invoice — hosting</span></li>
       </ul>
     </div>
   </div>
