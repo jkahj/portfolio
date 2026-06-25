@@ -291,6 +291,44 @@
       *, *::before, *::after { animation: none !important; transition: none !important; }
       .reveal { opacity: 1; transform: none; }
     }
+
+    /* ===== PROJECT DETAIL MODAL (CSS :target, no JS) ===== */
+    .modal {
+      position: fixed; inset: 0; z-index: 200;
+      display: none; align-items: flex-start; justify-content: center;
+      padding: 5vh 1rem; overflow-y: auto;
+      background: rgba(3, 4, 9, 0.7); backdrop-filter: blur(6px);
+    }
+    .modal:target { display: flex; }
+    .modal-backdrop { position: fixed; inset: 0; }
+    .modal-panel {
+      position: relative; z-index: 1;
+      max-width: 640px; width: 100%;
+      background: linear-gradient(180deg, rgba(20,24,38,.96), rgba(11,14,26,.96));
+      border: 1px solid var(--border-strong); border-radius: 18px;
+      padding: 2rem; box-shadow: 0 30px 80px rgba(0,0,0,.6);
+      animation: modalIn .25s ease;
+    }
+    @keyframes modalIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: none; } }
+    .modal-close {
+      position: absolute; top: 1rem; right: 1.1rem;
+      width: 34px; height: 34px; border-radius: 9px;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--muted); text-decoration: none; font-size: 1.3rem; line-height: 1;
+      border: 1px solid var(--border); transition: all .2s;
+    }
+    .modal-close:hover { color: var(--text); border-color: var(--accent); }
+    .modal-panel h3 { font-size: 1.5rem; font-weight: 700; margin-bottom: .4rem; padding-right: 2.5rem; }
+    .modal-role { font-size: .82rem; color: var(--accent3); font-weight: 600; margin-bottom: 1.2rem; }
+    .modal-panel h4 {
+      font-size: .76rem; font-weight: 700; text-transform: uppercase; letter-spacing: .1em;
+      margin: 1.4rem 0 .6rem; color: var(--accent);
+    }
+    .modal-panel p { font-size: .92rem; color: var(--muted); }
+    .modal-panel ul { list-style: none; display: flex; flex-direction: column; gap: .4rem; }
+    .modal-panel ul li { font-size: .9rem; color: var(--muted); display: flex; gap: .5rem; }
+    .modal-panel ul li::before { content: '▹'; color: var(--accent); }
+    .modal-links { display: flex; flex-wrap: wrap; gap: .7rem; margin-top: 1.6rem; }
   </style>
 </head>
 <body>
@@ -350,7 +388,8 @@
         <span class="tag">Push Notifications</span>
       </div>
       <div class="featured-links">
-        <a class="btn btn-primary" href="https://github.com/jkahj/Group-order" target="_blank">View Code on GitHub</a>
+        <a class="btn btn-primary" href="#m-buycart">View Details</a>
+        <a class="btn btn-ghost" href="https://github.com/jkahj/Group-order" target="_blank">View Code on GitHub</a>
         <a class="btn btn-ghost" href="./docs/BUYCART-presentation.pdf" target="_blank">View Presentation</a>
         <a class="btn btn-ghost" href="./docs/BUYCART-report.pdf" target="_blank">View Full Report</a>
       </div>
@@ -372,6 +411,7 @@
         <span class="tag">Docker</span>
         <span class="tag">Google Cloud Run</span>
       </div>
+      <a class="card-link" href="#m-drawing">View Details →</a>
       <a class="card-link" href="https://drawing-translator-259556405603.asia-east1.run.app" target="_blank">Try Live Demo →</a>
       <a class="card-link" href="https://github.com/jkahj/Drawing-Translator">View on GitHub →</a>
     </div>
@@ -387,6 +427,7 @@
         <span class="tag">OCR</span>
         <span class="tag">Render</span>
       </div>
+      <a class="card-link" href="#m-invoice">View Details →</a>
       <a class="card-link" href="https://invoice-ai-agent-dr3b.onrender.com/" target="_blank">Try Live Demo →</a>
       <a class="card-link" href="https://github.com/jkahj/invoice-ai-agent">View on GitHub →</a>
     </div>
@@ -403,6 +444,7 @@
         <span class="tag">Firebase</span>
         <span class="tag">PWA</span>
       </div>
+      <a class="card-link" href="#m-japanese">View Details →</a>
       <a class="card-link" href="https://japanese-b4d88.web.app/" target="_blank">Try Live Demo →</a>
       <a class="card-link" href="https://github.com/jkahj/japanese-learning-app">View on GitHub →</a>
     </div>
@@ -561,6 +603,115 @@
     resize(); draw();
   })();
 </script>
+
+<!-- ===== PROJECT DETAIL MODALS ===== -->
+<div class="modal" id="m-buycart">
+  <a class="modal-backdrop" href="#projects" aria-label="Close"></a>
+  <div class="modal-panel">
+    <a class="modal-close" href="#projects" aria-label="Close">&times;</a>
+    <h3>BUYCART — Group-Buying App</h3>
+    <div class="modal-role">Graduation Project · Key team member — frontend development &amp; backend API integration</div>
+    <p>A full-stack mobile app that lets people team up on group orders to split delivery costs. I built the cross-platform client and wired up the REST API and database.</p>
+    <h4>Tech Used</h4>
+    <div class="tag-row">
+      <span class="tag">React Native</span><span class="tag">Expo</span><span class="tag">FastAPI</span>
+      <span class="tag">MySQL</span><span class="tag">SQLAlchemy</span><span class="tag">Firebase</span>
+      <span class="tag">Push Notifications</span><span class="tag">REST APIs</span>
+    </div>
+    <h4>Key Features</h4>
+    <ul>
+      <li>Group ordering — create an order, others join, split the delivery fee</li>
+      <li>Order lifecycle with an "accepted" stage (preparing → accepted → delivering → completed)</li>
+      <li>Reputation &amp; credit-tier system ranking users by reliability</li>
+      <li>Real-time push notifications for joins, comments, and status changes</li>
+      <li>Comments, replies, likes, and post-order ratings</li>
+      <li>Image uploads and email/Google authentication</li>
+    </ul>
+    <div class="modal-links">
+      <a class="btn btn-primary" href="https://github.com/jkahj/Group-order" target="_blank">View Code</a>
+      <a class="btn btn-ghost" href="./docs/BUYCART-presentation.pdf" target="_blank">Presentation</a>
+      <a class="btn btn-ghost" href="./docs/BUYCART-report.pdf" target="_blank">Full Report</a>
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="m-drawing">
+  <a class="modal-backdrop" href="#projects" aria-label="Close"></a>
+  <div class="modal-panel">
+    <a class="modal-close" href="#projects" aria-label="Close">&times;</a>
+    <h3>Drawing Translator</h3>
+    <div class="modal-role">Solo project · Full-stack + deployment</div>
+    <p>An OCR-powered tool that extracts text from engineering drawings and translates technical content across languages, with multi-page PDF support and inch-value conversion.</p>
+    <h4>Tech Used</h4>
+    <div class="tag-row">
+      <span class="tag">Python</span><span class="tag">Flask</span><span class="tag">OCR</span>
+      <span class="tag">Google Gemini API</span><span class="tag">Docker</span><span class="tag">Google Cloud Run</span>
+    </div>
+    <h4>Key Features</h4>
+    <ul>
+      <li>OCR text extraction from engineering drawings</li>
+      <li>AI-assisted translation of technical content</li>
+      <li>Multi-page PDF processing</li>
+      <li>Automatic inch-value conversion</li>
+      <li>Containerized and deployed on Google Cloud Run</li>
+    </ul>
+    <div class="modal-links">
+      <a class="btn btn-primary" href="https://drawing-translator-259556405603.asia-east1.run.app" target="_blank">Live Demo</a>
+      <a class="btn btn-ghost" href="https://github.com/jkahj/Drawing-Translator" target="_blank">View Code</a>
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="m-invoice">
+  <a class="modal-backdrop" href="#projects" aria-label="Close"></a>
+  <div class="modal-panel">
+    <a class="modal-close" href="#projects" aria-label="Close">&times;</a>
+    <h3>AI Invoice Recognition System</h3>
+    <div class="modal-role">Solo project · AI automation</div>
+    <p>An intelligent invoice processing agent that uses AI vision to extract structured data from invoice images and PDFs, automating accounts-payable workflows.</p>
+    <h4>Tech Used</h4>
+    <div class="tag-row">
+      <span class="tag">Python</span><span class="tag">OCR</span><span class="tag">Google AI Studio</span><span class="tag">Render</span>
+    </div>
+    <h4>Key Features</h4>
+    <ul>
+      <li>AI-vision extraction of structured data from invoices</li>
+      <li>Supports both image and PDF inputs</li>
+      <li>Automates manual accounts-payable data entry</li>
+      <li>Deployed and accessible online</li>
+    </ul>
+    <div class="modal-links">
+      <a class="btn btn-primary" href="https://invoice-ai-agent-dr3b.onrender.com/" target="_blank">Live Demo</a>
+      <a class="btn btn-ghost" href="https://github.com/jkahj/invoice-ai-agent" target="_blank">View Code</a>
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="m-japanese">
+  <a class="modal-backdrop" href="#projects" aria-label="Close"></a>
+  <div class="modal-panel">
+    <a class="modal-close" href="#projects" aria-label="Close">&times;</a>
+    <h3>Japanese Learning App</h3>
+    <div class="modal-role">Personal side project · Made for interest · In development</div>
+    <p>A Progressive Web App for JLPT vocabulary study with spaced-repetition flashcards and Firebase sync. Works offline and across devices.</p>
+    <h4>Tech Used</h4>
+    <div class="tag-row">
+      <span class="tag">JavaScript</span><span class="tag">PWA</span><span class="tag">Firebase</span><span class="tag">GitHub Actions</span>
+    </div>
+    <h4>Key Features</h4>
+    <ul>
+      <li>JLPT vocabulary study (N1–N5)</li>
+      <li>Spaced-repetition flashcards</li>
+      <li>Offline support via service worker</li>
+      <li>Cross-device cloud sync with Firebase</li>
+      <li>Auto-deployed via GitHub Actions to Firebase Hosting</li>
+    </ul>
+    <div class="modal-links">
+      <a class="btn btn-primary" href="https://japanese-b4d88.web.app/" target="_blank">Live Demo</a>
+      <a class="btn btn-ghost" href="https://github.com/jkahj/japanese-learning-app" target="_blank">View Code</a>
+    </div>
+  </div>
+</div>
 
 <!-- Cloudflare Web Analytics -->
 <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "09b74344436349ec93a9a039d79a6b12"}'></script>
