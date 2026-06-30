@@ -239,12 +239,27 @@
       border: 1px solid var(--border-strong); box-shadow: 0 8px 30px rgba(0,0,0,.45);
     }
     .featured-info { padding: 2rem; display: flex; flex-direction: column; gap: 1rem; }
+    .badge-row { display: flex; flex-wrap: wrap; gap: .5rem; }
     .featured-badge {
       align-self: flex-start;
       background: linear-gradient(120deg, var(--accent), var(--accent2));
       color: #fff; font-size: .72rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase;
       padding: .3rem .8rem; border-radius: 30px; box-shadow: 0 4px 16px rgba(108,140,247,.4);
     }
+    .award-badge {
+      align-self: flex-start; display: inline-flex; align-items: center; gap: .35rem;
+      background: linear-gradient(120deg, #f59e0b, #fbbf24);
+      color: #1a1407; font-size: .72rem; font-weight: 700; letter-spacing: .04em; text-transform: uppercase;
+      padding: .3rem .8rem; border-radius: 30px; box-shadow: 0 4px 16px rgba(245,158,11,.4);
+    }
+    .modal-award {
+      display: block; margin-top: .6rem; border-radius: 12px; overflow: hidden;
+      border: 1px solid var(--border-strong); line-height: 0;
+      transition: border-color .2s, transform .2s;
+    }
+    .modal-award:hover { border-color: var(--accent); transform: translateY(-2px); }
+    .modal-award img { width: 100%; display: block; }
+    .modal-award-cap { font-size: .72rem; color: var(--muted); margin-top: .5rem; line-height: 1.4; }
     .featured-info h3 { font-size: 1.45rem; font-weight: 700; }
     .featured-info p { font-size: .92rem; color: var(--muted); flex: 1; }
     .featured-links { display: flex; flex-wrap: wrap; gap: .8rem; margin-top: .3rem; }
@@ -375,7 +390,10 @@
         allowfullscreen></iframe>
     </div>
     <div class="featured-info">
-      <span class="featured-badge">Graduation Project</span>
+      <div class="badge-row">
+        <span class="featured-badge">Graduation Project</span>
+        <span class="award-badge">★ 1st Place — Project Competition</span>
+      </div>
       <h3>BUYCART — Group-Buying App</h3>
       <p>A full-stack mobile app that lets people team up on group orders to split delivery costs. Contributed as a key team member, spearheading all frontend development and backend API integration — building the React Native (Expo) client, wiring up a FastAPI + MySQL backend, real-time push notifications, image uploads, and a reputation-scoring credit-tier system.</p>
       <div class="tag-row">
@@ -606,8 +624,13 @@
   <div class="modal-panel">
     <a class="modal-close" href="#projects" aria-label="Close">&times;</a>
     <h3>BUYCART — Group-Buying App</h3>
-    <div class="modal-role">Graduation Project · Key team member — frontend development &amp; backend API integration</div>
+    <div class="modal-role">Graduation Project · 1st Place, Project Competition · Key team member — frontend development &amp; backend API integration</div>
     <p>A full-stack mobile app that lets people team up on group orders to split delivery costs. I built the cross-platform client and wired up the REST API and database.</p>
+    <h4>Award</h4>
+    <a class="modal-award" href="./assets/buycart/award.jpg" target="_blank">
+      <img src="./assets/buycart/award.jpg" alt="1st Place certificate — 114 Project Competition, National Kaohsiung University of Science and Technology" loading="lazy" />
+    </a>
+    <div class="modal-award-cap">1st Place — 114 Academic Year Project Competition, National Kaohsiung University of Science and Technology (Dept. of Intelligent Commerce). Click to enlarge.</div>
     <h4>Tech Used</h4>
     <div class="tag-row">
       <span class="tag">React Native</span><span class="tag">Expo</span><span class="tag">FastAPI</span>
