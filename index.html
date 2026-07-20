@@ -453,12 +453,15 @@
       <div class="card-icon" style="background:rgba(52,211,153,.12)">
         <span style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.15rem;color:#34d399;">あ</span>
       </div>
-      <h3>Japanese Learning App <span class="badge-soft">Made for interest</span> <span class="badge-dev">In development</span></h3>
-      <p>A personal side project built out of interest — a Progressive Web App for JLPT vocabulary study with spaced-repetition flashcards and Firebase sync. Works offline and across devices.</p>
+      <h3>Japanese Deep Learning <span class="badge-soft">Solo build</span> <span class="badge-dev">In development</span></h3>
+      <p>An offline-first PWA for JLPT N5–N1 study, built solo in vanilla JavaScript. A spaced-repetition engine, four quiz modes, a 19,002-word JMdict dictionary with pitch accents and kanji breakdowns, and Firestore sync that survives losing signal on a train.</p>
       <div class="tag-row">
         <span class="tag">JavaScript</span>
         <span class="tag">PWA</span>
         <span class="tag">Firebase</span>
+        <span class="tag">Firestore</span>
+        <span class="tag">Service Worker</span>
+        <span class="tag">GitHub Actions</span>
       </div>
       <a class="card-link" href="#m-japanese">View Details →</a>
       <a class="card-link" href="https://github.com/jkahj/japanese-learning-app">View on GitHub →</a>
@@ -711,21 +714,27 @@
   <a class="modal-backdrop" href="#projects" aria-label="Close"></a>
   <div class="modal-panel">
     <a class="modal-close" href="#projects" aria-label="Close">&times;</a>
-    <h3>Japanese Learning App</h3>
-    <div class="modal-role">Personal side project · Made for interest · In development</div>
+    <h3>Japanese Deep Learning</h3>
+    <div class="modal-role">Solo build · Vanilla JavaScript PWA · In development</div>
     <a class="btn btn-primary" style="margin-bottom:1.2rem;" href="https://japanese-b4d88.web.app/" target="_blank">Try Live Demo →</a>
-    <p>A Progressive Web App for JLPT vocabulary study with spaced-repetition flashcards and Firebase sync. Works offline and across devices.</p>
+    <p>An offline-first PWA for JLPT N5 to N1 study, built solo with no framework and no build step. Around 19,000 lines of vanilla JavaScript in a single document, which keeps the whole app to one cacheable file.</p>
     <h4>Tech Used</h4>
     <div class="tag-row">
-      <span class="tag">JavaScript</span><span class="tag">PWA</span><span class="tag">Firebase</span><span class="tag">GitHub Actions</span>
+      <span class="tag">JavaScript</span><span class="tag">PWA</span><span class="tag">Service Worker</span>
+      <span class="tag">Firebase Auth</span><span class="tag">Firestore</span><span class="tag">Canvas API</span>
+      <span class="tag">GitHub Actions</span>
     </div>
     <h4>Key Features</h4>
     <ul>
-      <li>JLPT vocabulary study (N1–N5)</li>
-      <li>Spaced-repetition flashcards</li>
-      <li>Offline support via service worker</li>
-      <li>Cross-device cloud sync with Firebase</li>
-      <li>Auto-deployed via GitHub Actions to Firebase Hosting</li>
+      <li>Spaced-repetition engine: srsLevel 0 to 5 with scheduled review dates, moving words through new, learning, review, and mastered</li>
+      <li>Four quiz modes (reading, listening, cloze, grammar cloze) plus a retry mode that replays only missed items</li>
+      <li>19,002-word JMdict dictionary with conjugation tables, pitch accents, kanji breakdowns, and collocations</li>
+      <li>147 grammar points with structure, explanation, and examples</li>
+      <li>Offline-first sync: localStorage as read cache, optimistic writes, debounced flush to Firestore</li>
+      <li>Google sign-in with Firestore rules scoping each user to their own subtree</li>
+      <li>Traditional Chinese definitions pre-baked at build time rather than translated at runtime, trading 951 KB for instant lookups</li>
+      <li>Canvas-animated themes: koi pond in light mode, lantern night lake in dark</li>
+      <li>Auto-deployed to Firebase Hosting via GitHub Actions on every push to main</li>
     </ul>
     <div class="modal-links">
       <a class="btn btn-ghost" href="https://github.com/jkahj/japanese-learning-app" target="_blank">View Code</a>
