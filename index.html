@@ -436,6 +436,23 @@
     </div>
 
     <div class="card reveal">
+      <div class="card-icon" style="background:rgba(167,139,250,.12)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#a78bfa" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="5" cy="6" r="2.2"/><circle cx="5" cy="18" r="2.2"/><circle cx="19" cy="12" r="2.2"/><path d="M7.2 6h4.3a2 2 0 0 1 2 2v2.2"/><path d="M7.2 18h4.3a2 2 0 0 0 2-2v-2.2"/><path d="M13.5 12h3.3"/></svg>
+      </div>
+      <h3>LinkedIn Content Automation <span class="badge-soft">Solo build</span></h3>
+      <p>Four coordinated n8n workflows that curate engineering news, draft posts with Gemini behind a constrained prompt, and publish on a schedule. Every post passes a human approval gate before it goes live.</p>
+      <div class="tag-row">
+        <span class="tag">n8n</span>
+        <span class="tag">Gemini 2.5 Flash</span>
+        <span class="tag">JavaScript</span>
+        <span class="tag">Google Sheets API</span>
+        <span class="tag">Gmail API</span>
+        <span class="tag">LinkedIn API</span>
+      </div>
+      <a class="card-link" href="#m-n8n">View Details →</a>
+    </div>
+
+    <div class="card reveal">
       <div class="card-icon" style="background:rgba(52,211,153,.12)">
         <span style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.15rem;color:#34d399;">あ</span>
       </div>
@@ -669,6 +686,36 @@
     <div class="modal-links">
       <a class="btn btn-ghost" href="https://github.com/jkahj/Drawing-Translator" target="_blank">View Code</a>
     </div>
+  </div>
+</div>
+
+<div class="modal" id="m-n8n">
+  <a class="modal-backdrop" href="#projects" aria-label="Close"></a>
+  <div class="modal-panel">
+    <a class="modal-close" href="#projects" aria-label="Close">&times;</a>
+    <h3>LinkedIn Content Automation</h3>
+    <div class="modal-role">Solo build · Workflow orchestration</div>
+    <p>A four-workflow n8n system that turns a firehose of engineering news into a steady LinkedIn presence, without letting an LLM publish anything unreviewed. It runs on a schedule in production and has been live since July 2026.</p>
+    <h4>Tech Used</h4>
+    <div class="tag-row">
+      <span class="tag">n8n</span><span class="tag">Gemini 2.5 Flash</span><span class="tag">LangChain</span><span class="tag">JavaScript</span><span class="tag">Google Sheets API</span><span class="tag">Gmail API</span><span class="tag">Google Drive API</span><span class="tag">LinkedIn API</span><span class="tag">RSS</span>
+    </div>
+    <h4>How It Works</h4>
+    <ul>
+      <li><strong>Curator</strong> runs every two days at 10:00 Taipei, pulling five feeds: Hacker News (200+ points), TechCrunch AI, a Google News query, Simon Willison, and Pragmatic Engineer</li>
+      <li><strong>Approve By Email</strong> watches Gmail for a reply carrying an image and a token, uploads the image to Drive, and flips the row to approved</li>
+      <li><strong>Publisher</strong> posts one approved draft to LinkedIn every Tuesday and Thursday at 09:00, then marks it posted</li>
+      <li><strong>Failure Alert</strong> fires on any error, emailing the workflow name, failing node, message, and a link to the execution</li>
+    </ul>
+    <h4>Engineering Notes</h4>
+    <ul>
+      <li>Deduplication runs across executions, keyed on article URL, so a story is never drafted twice</li>
+      <li>Relevance filtering combines a keyword allowlist with a 168 hour recency cutoff, capped at two candidates per run</li>
+      <li>Article scraping strips scripts, nav, and footers, decodes entities, caps at 6,000 characters, and falls back to the RSS snippet when extraction yields too little</li>
+      <li>Every feed and fetch retries with backoff and degrades gracefully, so one dead source cannot break a run</li>
+      <li>The drafting prompt bans unsupported claims, invented personal experience, and a list of filler words, keeping output grounded in the source article</li>
+      <li>Google Sheets acts as the state machine: pending, approved, posted</li>
+    </ul>
   </div>
 </div>
 
