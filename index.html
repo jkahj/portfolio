@@ -423,11 +423,12 @@
         <svg viewBox="0 0 24 24" fill="none" stroke="#6c8cf7" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7V4h7"/><path d="M9 4c0 4-2.5 7-5 8"/><path d="M5 8c1.5 1.5 3.5 2.5 5 2.5"/><path d="M13 20l4-9 4 9"/><path d="M14.5 17h5"/></svg>
       </div>
       <h3>Drawing Translator</h3>
-      <p>OCR-powered tool that extracts text from engineering drawings and translates technical content across languages. Supports multi-page PDFs with AI-assisted translation and inch-value conversion.</p>
+      <p>Translates engineering drawings with a dual-engine pipeline: a Gemini LLM for technical translation and OpenCV template matching for symbol detection. Preserves the PDF's vector layout and converts inch dimensions to metric.</p>
       <div class="tag-row">
         <span class="tag">Python</span>
         <span class="tag">Flask</span>
         <span class="tag">OCR</span>
+        <span class="tag">OpenCV</span>
         <span class="tag">Docker</span>
         <span class="tag">Google Cloud Run</span>
       </div>
@@ -669,19 +670,19 @@
     <h3>Drawing Translator</h3>
     <div class="modal-role">Solo project · Full-stack + deployment</div>
     <a class="btn btn-primary" style="margin-bottom:1.2rem;" href="https://drawing-translator-259556405603.asia-east1.run.app" target="_blank">Try Live Demo →</a>
-    <p>An OCR-powered tool that extracts text from engineering drawings and translates technical content across languages, with multi-page PDF support and inch-value conversion.</p>
+    <p>A tool for translating engineering drawings that pairs a Gemini LLM for context-aware technical translation with OpenCV template matching for fast, zero-cost symbol detection, then writes the result back onto the drawing without flattening its vector layout.</p>
     <h4>Tech Used</h4>
     <div class="tag-row">
-      <span class="tag">Python</span><span class="tag">Flask</span><span class="tag">OCR</span>
+      <span class="tag">Python</span><span class="tag">Flask</span><span class="tag">OCR</span><span class="tag">OpenCV</span>
       <span class="tag">Google Gemini API</span><span class="tag">Docker</span><span class="tag">Google Cloud Run</span>
     </div>
     <h4>Key Features</h4>
     <ul>
-      <li>OCR text extraction from engineering drawings</li>
-      <li>AI-assisted translation of technical content</li>
-      <li>Multi-page PDF processing</li>
-      <li>Automatic inch-value conversion</li>
-      <li>Containerized and deployed on Google Cloud Run</li>
+      <li>Vector-fidelity processing: high-resolution PDF handling that preserves the text layer and vector layout instead of rasterizing the page</li>
+      <li>AI and CV dual-engine pipeline: Gemini for context-aware technical translation, OpenCV template matching for fast, zero-cost auto-detection of symbols and stamps across multi-page drawings</li>
+      <li>Interactive "edit-only" workflow: precise coordinate masking, automated multi-page stamp detection with human review, and logo and background-color blending</li>
+      <li>Automated unit conversion: real-time inch-to-metric conversion for drawing dimensions</li>
+      <li>Containerized with Docker and deployed serverless on Google Cloud Run (asia-east1)</li>
     </ul>
     <div class="modal-links">
       <a class="btn btn-ghost" href="https://github.com/jkahj/Drawing-Translator" target="_blank">View Code</a>
